@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appointment_date: 2024-09-04
+  appointment_time: 2024-09-04 15:29:52
+  reason: MyString
+
+two:
+  appointment_date: 2024-09-04
+  appointment_time: 2024-09-04 15:29:52
+  reason: MyString
