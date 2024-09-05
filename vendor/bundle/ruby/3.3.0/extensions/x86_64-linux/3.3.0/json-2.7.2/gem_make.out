@@ -1,0 +1,16 @@
+current directory: /home/developer/Desktop/HealthScheduler/vendor/bundle/ruby/3.3.0/gems/json-2.7.2/ext/json
+/home/developer/.rbenv/versions/3.3.0/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/developer/Desktop/HealthScheduler/vendor/bundle/ruby/3.3.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240905-6712-1j9kii sitelibdir\=./.gem.20240905-6712-1j9kii clean
+
+current directory: /home/developer/Desktop/HealthScheduler/vendor/bundle/ruby/3.3.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240905-6712-1j9kii sitelibdir\=./.gem.20240905-6712-1j9kii
+make: Nothing to be done for 'all'.
+
+current directory: /home/developer/Desktop/HealthScheduler/vendor/bundle/ruby/3.3.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240905-6712-1j9kii sitelibdir\=./.gem.20240905-6712-1j9kii install
+
+current directory: /home/developer/Desktop/HealthScheduler/vendor/bundle/ruby/3.3.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240905-6712-1j9kii sitelibdir\=./.gem.20240905-6712-1j9kii clean
