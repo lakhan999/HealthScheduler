@@ -70,6 +70,7 @@ class PatientsController < ApplicationController
   private
 
   def patient_params
-    params.require(:patient).permit(:name, :mobile_number, :address, :blood_group, :medical_history)
+    params.require(:patient).permit(:name, :mobile_number, :address, :blood_group, :medical_history
+  def index
   end
 end
