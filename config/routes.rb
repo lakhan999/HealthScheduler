@@ -12,5 +12,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
-  resourses :patients
+
+  resources :patients do
+    get :appointment_history
+  end
 end

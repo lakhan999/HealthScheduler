@@ -1,0 +1,44 @@
+<div class="centered-form">
+    <%= form_with model:@patient,local:true  do |form| %>
+    <h3>Enter your details</h3>
+      <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+        <% @patient.errors.full_messages_for(:name).each do |message| %>
+        <div class="message"><%= message %></div>
+      <% end %>
+      </div>
+      <br>
+
+      <div>
+        <%= form.label :mobile_number %>
+        <%= form.text_field :mobile_number %>
+        <% @patient.errors.full_messages_for(:mobile_number).each do |message| %>
+        <div class="message"><%= message %></div>
+      <% end %>
+      </div>
+      <br>
+
+      <div>
+        <%= form.label :address %>
+        <%= form.text_field :address %>
+      </div>
+
+      <div>
+        <%= form.label :blood_group %>
+        <%= form.text_field :blood_group %>
+        <% @patient.errors.full_messages_for(:blood_group).each do |message| %>
+        <div class="message"><%= message %></div>
+      <% end %>
+      </div>
+
+      <div>
+        <%= form.label :medical_history %>
+        <%= form.text_field :medical_history %>
+        <% @patient.errors.full_messages_for(:medical_history).each do |message| %>
+        <div class="message"><%= message %></div>
+      <% end %>
+      </div>
+      <%= form.submit %>
+    <% end %>
+</div>
