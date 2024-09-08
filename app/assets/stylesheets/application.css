@@ -90,8 +90,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #427283;
+    background-color: #0f0980;
     padding: 20px;
+    border-radius: 5px;
   }
   
   .logo {
@@ -119,3 +120,88 @@
     color: #f4d03f;
   }
   
+
+.bg-brand {
+  background-color: #0f0980;
+  color: #fff;
+}
+
+
+table {
+  width: 30%;
+  border-collapse: collapse;
+}
+
+th {
+  border: 1px solid;
+  height: 10px;
+  padding: 10px;
+  text-align: left;
+}
+td {
+  border: 1px solid;
+  text-align: center;
+  padding: 10px;
+  text-align: left;
+}
+
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.centered-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin: 0;
+  /* background-color: #f2f2f2; optional background color */
+}
+.centered-form div {
+  margin-bottom: 10px;
+}
+
+/* for the content to make it centerd */
+.center{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* to style buttons of the page */
+
+.button {
+
+  background-color: #45a049;
+  color: #ffffff;
+  border-color: #45a049;
+  width: 10%;
+  padding: 10px 15px;
+  margin: 3px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration:none;
+}

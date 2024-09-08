@@ -17,26 +17,24 @@
   </head>
 
   <body>
-  
-  <nav class="navbar">
-    <div class="logo">MyWebsite</div>
+
+<nav class="navbar">
+    <div class="logo">HealthScheduler</div>
     <ul class="nav-links">
       <li><a href="\">Home</a></li>
       <li><a href="patients">Patient</a></li>
       <li><a href="doctors">Doctor</a></li>
     </ul>
-  </nav>
-
-      <p class="notice"><%= notice %></p> 
+</nav>
+      <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p> 
-      <a>
-      <% if user_signed_in? %> 
+      <a>   <% if user_signed_in? %> 
       <div> Welcome <%= current_user.email %> </div> 
         <%= link_to "Sign out", destroy_user_session_path, data: {
                             turbo_method: :delete,
                             turbo_confirm: "Are you sure?"} %> 
       <% else %>
-        <%= link_to "Sign in", new_user_session_path %> 
+    <%= link_to "Sign in", new_user_session_path %> 
       <% end %>
       </a>
     <%= yield %>

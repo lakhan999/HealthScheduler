@@ -1,16 +1,15 @@
 <p class="message"><%=notice%></p>
-<div id = "courses">
+<div>
   <h1>Patient</h1>
   <table>                         
     <tr>                         
      <th>Patient Name</th>
      <th>More Info</th>
     </tr>   
-    <tr><% @patients.each do |patient| %>
-     <td><%=patient.name %></td>
-      <td><%= link_to "Patient Details", patient %></td>
-    </tr>
-       <% end %>                     
+    <tr>
+     <td><%=@patient.name %></td>
+     <td><%= link_to "Patient Details", @patient %></td>
+    </tr>                   
   </table> 
 </div>
 <br>

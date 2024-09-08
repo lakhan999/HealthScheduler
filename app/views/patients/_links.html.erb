@@ -1,0 +1,9 @@
+<div>
+  <li><%=link_to "Update Profile", edit_patient_path%></li>
+<div>
+
+<div>
+  <li><%=link_to "Delete Account", patient_path(@patient.id), data: {
+                            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?"}%></li>
+<div>

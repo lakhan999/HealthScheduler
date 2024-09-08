@@ -1,0 +1,49 @@
+<div class="centered-form">
+    <%= form_with model:@doctor,local:true  do |form| %>
+    <h3>Enter your details</h3>
+      <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+        <% @doctor.errors.full_messages_for(:name).each do |message| %>
+        <div class="message"><%= message %></div>
+      <% end %>
+      </div>
+      <br>
+
+      <div>
+        <%= form.label :mobile_number %>
+        <%= form.text_field :mobile_number %>
+        <% @doctor.errors.full_messages_for(:mobile_number).each do |message| %>
+        <div class="message"><%= message %></div>
+      <% end %>
+      </div>
+      <br>
+
+      <div>
+        <%= form.label :address %>
+        <%= form.text_field :address %>
+      </div>
+
+      <div>
+        <%= form.label :specialization%>
+        <%= form.text_field :specialization %>
+        <% @doctor.errors.full_messages_for(:specialization).each do |message| %>
+        <div class="message"><%= message %></div>
+      <% end %>
+      </div>
+
+       <div>
+        <%= form.label :experians%>
+        <%= form.text_field :experians %>
+      </div>
+
+      <div>
+        <%= form.label :consultation_fees %>
+        <%= form.text_field :consultation_fees %>
+        <% @doctor.errors.full_messages_for(:consultation_fees).each do |message| %>
+        <div class="message"><%= message %></div>
+      <% end %>
+      </div>
+      <%= form.submit %>
+    <% end %>
+</div>
