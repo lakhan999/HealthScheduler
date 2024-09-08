@@ -1,0 +1,38 @@
+<p class="notification"><%= notice %></p>
+<h2>Doctor</h2>
+<table>                         
+  <tr>                          
+    <th>Name</th>
+    <th>Mobile-Number</th>
+    <th>Address</th>
+    <th>specialization</th>
+    <th>consultation_fees</th>
+    <th>experians</th>
+  </tr>   
+  <tr>
+    <td><%= @doctor.name %></td> 
+    <td><%= @doctor.mobile_number %></td> 
+    <td><%= @doctor.address %></td>  
+    <td><%= @doctor.specialization %></td> 
+    <td><%= @doctor.consultation_fees %></td> 
+    <td><%= @doctor.experians %></td> 
+  </tr>                      
+</table> 
+<br>
+<div>
+  <%= link_to "Back", doctors_path%>
+</div>
+<div>
+  <%= link_to "Edit Profile", edit_doctor_path%>
+</div>
+<div>
+  <%= link_to "Delete Account", doctor_path(@doctor.id),data: {
+                            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?"}%>
+</div>
+<div>
+  <%= link_to "Your Patients History" ,doctor_doctors_appointment_history_path(@doctor.id)%>
+</div>
+<div>
+  <%= link_to "Your Appointment History" ,doctor_patients_history_path(@doctor.id)%>
+</div>

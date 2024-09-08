@@ -16,4 +16,9 @@ Rails.application.routes.draw do
   resources :patients do
     get :appointment_history
   end
+
+  resources :doctors do
+  get :doctors_appointment_history
+  get :patients_history
+  end
 end

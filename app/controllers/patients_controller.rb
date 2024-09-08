@@ -1,12 +1,10 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_patient_id, only: [ :show, :edit, :update, :destroy, :appointment_history ]
+  before_action :find_patient_id, only: [ :index, :show, :edit, :update, :destroy, :appointment_history ]
 
 
   # Initialising all Patients
   def index
-    @patients = Patient.all
-    # render json: @patients
   end
 
   # Defining new Patient
@@ -27,17 +25,14 @@ class PatientsController < ApplicationController
   # method to show the details of the Patient
   def show
     if @patient.nil?
-      flash[:alert] = "Your Course was not found"
       redirect_to action: :index
     end
-    #  inline helper will render/output the following content without any veiw for show action.
-    #  render inline: "<p><%= @courses.course_name %></p><%=@courses.price%> <p></p>
   end
 
   # Method to update the existing Patient
   def update
     if @patient.update(patient_params)
-      redirect_to @patient, notice: "The course was updated successfully"
+      redirect_to @patient, notice: "Your profile was updated successfully"
     else
       render action: :edit, status: :unprocessable_entity
     end
@@ -50,9 +45,9 @@ class PatientsController < ApplicationController
   # Patient Deletion
   def destroy
     if @patient.destroy
-      redirect_to courses_path, notice: "Course Deleted successfully"
+      redirect_to "/", notice: "Your Account is Deleted permanently"
     else
-      redirect_to courses_path
+      redirect_to patients_path
     end
   end
 
@@ -64,13 +59,14 @@ class PatientsController < ApplicationController
   # Appointment history of the patient
   def appointment_history
     @history = @patient.appointments
+    if @history == nil
+      render_to @patient, notice: "You Dont Have any Appointment Yet"
+    end
   end
-
   # setting strong params for the patient
   private
 
   def patient_params
-    params.require(:patient).permit(:name, :mobile_number, :address, :blood_group, :medical_history
-  def index
+    params.require(:patient).permit(:name, :mobile_number, :address, :blood_group, :medical_history)
   end
 end

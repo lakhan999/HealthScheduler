@@ -2,18 +2,26 @@
 <h2>Patient</h2>
 <table>                         
   <tr>                          
-    <th>Patient Name</th>
-    <th>Patient Price</th>
-    <th>Patient Duration</th>
+    <th>Name</th>
+    <th>Mobile-Number</th>
+    <th>Address</th>
+    <th>Blood-Group</th>
+    <th>Medical-History</th>
   </tr>   
   <tr>
     <td><%= @patient.name %></td> 
     <td><%= @patient.mobile_number %></td> 
     <td><%= @patient.address %></td>  
+    <td><%= @patient.blood_group %></td> 
+    <td><%= @patient.medical_history %></td> 
   </tr>                      
 </table> 
 <br>
 
 <div>
   <li><%=link_to "Appointment History", patient_appointment_history_path(@patient.id)%></li>
+<div>
+
+<div>
+  <li><%= render "links" %></li>
 <div>

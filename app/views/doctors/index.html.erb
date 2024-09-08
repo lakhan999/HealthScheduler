@@ -1,0 +1,22 @@
+<h2>Doctors page</h2>
+<p class="message"><%=notice%></p>
+<div>
+  <table>                     
+    <tr>                         
+     <th>Doctors Name</th>
+     <th>More Info</th>
+    </tr>    
+    <tr>
+      <%@doctors.each do |doctor|%>
+     <td><%=doctor.name %></td>
+     <td><%= link_to "Details", doctor %></td>
+   
+    </tr> 
+          <%end%>        
+  </table>       
+</div>
+<br>
+<div>
+  <%= link_to "Add your details" ,new_doctor_path%>
+</div>
+
