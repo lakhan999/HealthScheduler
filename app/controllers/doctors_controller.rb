@@ -16,7 +16,7 @@ class DoctorsController < ApplicationController
 
   #
   def new
-  @doctor = Doctor.new
+    @doctor = Doctor.new
   end
 
   #
@@ -53,7 +53,7 @@ class DoctorsController < ApplicationController
 
   # doctords history with his patients
   def patients_history
-  @history = @doctor.patients
+    @patients = @doctor.patients
   end
 
   # determining doctors appointment
@@ -61,12 +61,14 @@ class DoctorsController < ApplicationController
     @appointment_history = @doctor.appointments
   end
 
+
+private
+
   # finding doctors id
   def find_doctor_id
     @doctor = Doctor.find(params[:id])
   end
 
-private
   def doctor_params
     params.require(:doctor).permit(:name, :mobile_number, :address, :specialization, :consultation_fees, :experians)
   end

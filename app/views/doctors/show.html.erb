@@ -31,8 +31,16 @@
                             turbo_confirm: "Are you sure?"}%>
 </div>
 <div>
-  <%= link_to "Your Patients History" ,doctor_doctors_appointment_history_path(@doctor.id)%>
-</div>
+  <%= link_to "Your Patients History" ,patients_history_doctor_path(@doctor.id)%>
+</div><br>
 <div>
-  <%= link_to "Your Appointment History" ,doctor_patients_history_path(@doctor.id)%>
+  <%= link_to "Your Appointment History" ,doctors_appointment_history_doctor_path(@doctor.id)%>
+</div>
+<br>
+<div>
+  <%= link_to "Add Your Availability" ,new_doctor_doctor_availability_path(@doctor.id)%>
+</div>
+<br>
+<div>
+  <%= link_to "View Your Availability" ,doctor_doctor_availabilities_path(@doctor.id)%>
 </div>

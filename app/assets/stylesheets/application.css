@@ -1,3 +1,5 @@
+require bootstrap-timepicker
+  
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,9 +12,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
- */
+
+ 
  /* <%# Style the header with a grey background and some padding %> */ */
 /* .header {
   overflow: hidden;
@@ -76,6 +77,7 @@
       float: none;
     }
   } */ 
+
   * {
     margin: 0;
     padding: 5;
@@ -157,7 +159,7 @@ input[type=text], select {
 }
 
 input[type=submit] {
-  width: 100%;
+  width: auto;
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -204,4 +206,55 @@ input[type=submit]:hover {
   border-radius: 4px;
   cursor: pointer;
   text-decoration:none;
+}
+
+/* Managing View for body */
+
+.body_container {
+  display: flex;
+  justify-content: center;  /* Centers items horizontally */
+  align-items: center;      /* Centers items vertically */
+  height: 10vh;            /* Full viewport height to center vertically */
+  text-align: center;
+
+  flex-wrap: wrap;
+  gap: auto;
+
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Adjust spacing between items as needed */
+  margin: 20px ;
+}
+
+.col-md-3 {
+  flex: 1;
+  max-width: 500px; /* Adjust width of the columns as needed */
+}
+
+.card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #f8f9fa; /* Example background color */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* .card-inner img {
+  max-width: 100px; /* Adjust size of image */
+  /* margin-bottom: 15px; */
+/* }  */
+
+.card-inner h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card-inner p {
+  font-size: 16px;
+  color: #666;
 }

@@ -1,27 +1,27 @@
 <p class="notification"><%= notice %></p>
 <h2>Patient</h2>
-<table>                         
-  <tr>                          
-    <th>Name</th>
-    <th>Mobile-Number</th>
-    <th>Address</th>
-    <th>Blood-Group</th>
-    <th>Medical-History</th>
-  </tr>   
-  <tr>
-    <td><%= @patient.name %></td> 
-    <td><%= @patient.mobile_number %></td> 
-    <td><%= @patient.address %></td>  
-    <td><%= @patient.blood_group %></td> 
-    <td><%= @patient.medical_history %></td> 
-  </tr>                      
-</table> 
+  <table>                         
+    <tr>                          
+      <th>Name</th>
+      <th>Mobile-Number</th>
+      <th>Address</th>
+      <th>Blood-Group</th>
+      <th>Medical-History</th>
+    </tr>   
+    <tr>
+      <td><%= @patient.name %></td> 
+      <td><%= @patient.mobile_number %></td> 
+      <td><%= @patient.address %></td>  
+      <td><%= @patient.blood_group %></td> 
+      <td><%= @patient.medical_history %></td> 
+    </tr>                      
+  </table> 
 <br>
 
 <div>
-  <li><%=link_to "Appointment History", patient_appointment_history_path(@patient.id)%></li>
-<div>
+  <li><%=link_to "Appointment History", appointment_history_patient_path(@patient.id)%></li>
+</div>
 
 <div>
-  <li><%= render "links" %></li>
-<div>
+  <%= render "links" %>
+</div>

@@ -1,0 +1,23 @@
+<h3 class = "center">Available Time Slots for <%=@doctor.name%></h3>
+<div class = "">
+  <ul>
+    <div class = "body_container">
+      <%@availabilities.each do |availability|%>
+    
+        <div class = "row">
+            <div class = "col-md-3">
+                <div class = "card-inner">
+                 <div> <%= availability.date %></div><br>
+
+                  <% if availability.start_time.present? && availability.end_time.present? %>
+                    <%= availability.start_time.strftime("%I:%M %p") %> to 
+                    <%= availability.end_time.strftime("%I:%M %p") %>
+                  <% else %>
+                    Time not set
+                  <% end %>
+              </div>
+            </div>
+          </div>
+    <%end%>
+</ul>
+</div>

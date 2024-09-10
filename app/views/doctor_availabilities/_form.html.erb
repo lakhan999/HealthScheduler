@@ -1,0 +1,24 @@
+
+<h1>Select Your Availability</h1>
+
+<div class="centered-form">
+    <%= form_with(model: [@doctor, @availability], local: true) do |form| %>
+    <h3>Enter your details</h3>
+      <div>
+        <%= form.label :date %>
+        <%= form.date_select :date %>
+      </div>
+
+      <div>
+        <%= form.label :start_time %>
+        <%= form.time_select :start_time %>
+      </div>
+
+      <div>
+        <%= form.label :end_time %>
+        <%= form.time_select :end_time %>
+      </div>
+
+      <%= form.submit %>
+    <% end %>
+</div>
