@@ -1,7 +1,8 @@
 <p class="notification"><%= notice %></p>
 <h2>History</h2>
-<table> 
-      <%@history.each do |history|%>                        
+  <%@appointment_history.each do |history|%>  
+  <% if history.patient.present? %>
+<table>                       
   <tr>                          
     <th>Patinet Name</th>
     <th>Patinet mobile_number</th>
@@ -9,8 +10,8 @@
     <th>Appointment-Time</th>
     <th>Reason</th>
   </tr>   
- 
-  <tr>
+  <tr>  
+   
     <td><%=history.patient.name%></td> 
  
     <td><%=history.patient.mobile_number%></td> 
@@ -21,9 +22,11 @@
 
     <td><%=history.reason%></td> 
   </tr>
-                  
+  <% else %>
+  <h3>Patient not found</h3>
+  <%end%>   
+<%end%>              
 </table> 
-   <%end%>  
 <br>
 
 <div>

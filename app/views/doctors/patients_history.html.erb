@@ -1,0 +1,25 @@
+<p class="notification"><%= notice %></p>
+<h2>History</h2>
+<table> 
+  <%@patients.each do |patient|%>                        
+  <tr>                          
+    <th>Patinet Name</th>
+    <th>Patinet mobile_number</th>
+    <th>Reason</th>
+  </tr>   
+ 
+  <tr>
+    <td><%=patient.name%></td> 
+ 
+    <td><%=patient.mobile_number%></td> 
+
+    <td><%=patient.medical_history%></td> 
+  </tr>
+                  
+</table> 
+   <%end%>  
+<br>
+
+<div>
+    <%=link_to "Back to Profile", @doctor %>
+</div>

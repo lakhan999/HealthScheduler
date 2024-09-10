@@ -14,11 +14,18 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :patients do
-    get :appointment_history
+    member do
+      get :appointment_history
+    end
   end
 
   resources :doctors do
-  get :doctors_appointment_history
-  get :patients_history
+    member do
+    get :doctors_appointment_history
+    get :patients_history
+    end
+    resources :doctor_availabilities, only: [ :new, :create, :index, :show ]
   end
+
+  # resources :doctor_availabilities
 end

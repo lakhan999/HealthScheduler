@@ -1,10 +1,11 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_patient_id, only: [ :index, :show, :edit, :update, :destroy, :appointment_history ]
-
+  before_action :find_patient_id, only: [  :show, :edit, :update, :destroy, :appointment_history ]
+  # before_action :set_index_page
 
   # Initialising all Patients
   def index
+    @patient = Patient.first
   end
 
   # Defining new Patient
@@ -16,7 +17,7 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(patient_params)
     if @patient.save
-      redirect_to @patient, notice: "The course was created successfully"
+      redirect_to @patient, notice: "Your Profile is created successfully"
     else
       render :new
     end
@@ -53,7 +54,7 @@ class PatientsController < ApplicationController
 
   # method to find Patient id for beforaction callback
   def find_patient_id
-    @patient = Patient.find(current_user.id)
+    @patient = Patient.find(params[:id])
   end
 
   # Appointment history of the patient
@@ -63,6 +64,12 @@ class PatientsController < ApplicationController
       render_to @patient, notice: "You Dont Have any Appointment Yet"
     end
   end
+
+  # def set_index_page
+  #   if user_signed_in?
+  #     render :new
+  #   end
+  # end
   # setting strong params for the patient
   private
 

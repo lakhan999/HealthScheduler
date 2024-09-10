@@ -7,6 +7,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
@@ -30,12 +33,15 @@
       <p class="alert"><%= alert %></p> 
       <a>   <% if user_signed_in? %> 
       <div> Welcome <%= current_user.email %> </div> 
-        <%= link_to "Sign out", destroy_user_session_path, data: {
+       <div > <%= link_to "Sign out", destroy_user_session_path, data: {
                             turbo_method: :delete,
                             turbo_confirm: "Are you sure?"} %> 
+        </div>
       <% else %>
+      <div>
     <%= link_to "Sign in", new_user_session_path %> 
-      <% end %>
+      </div>
+      <% end %></div>
       </a>
     <%= yield %>
   </body>
