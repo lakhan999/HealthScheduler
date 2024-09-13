@@ -1,7 +1,6 @@
-<p class="notification"><%= notice %></p>
 <h2>History</h2>
 <table> 
-      <%@history.each do |history|%>                        
+  <%@history.each do |history|%>                        
   <tr>                          
     <th>Doctor Name</th>
     <th>Doctor specialization</th>
@@ -10,25 +9,18 @@
     <th>Appointment-Time</th>
     <th>Reason</th>
   </tr>   
- 
   <tr>
     <td><%=history.doctor.name%></td> 
- 
     <td><%=history.doctor.specialization%></td> 
-
     <td><%=history.doctor.mobile_number%></td> 
-
     <td><%=history.appointment_date%></td> 
-
     <td><%=history.appointment_time%></td> 
-
     <td><%=history.reason%></td> 
-  </tr>
-                  
+  </tr>             
 </table> 
    <%end%>  
 <br>
 
 <div>
-    <%=link_to "Back to Profile", @patient %>
+    <%=link_to "Back to Profile", patient_path(current_user)%>
 </div>

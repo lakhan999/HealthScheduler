@@ -1,9 +1,8 @@
 <h3 class = "center">Available Time Slots for <%=@doctor.name%></h3>
-<div class = "">
+<div>
   <ul>
     <div class = "body_container">
       <%@availabilities.each do |availability|%>
-    
         <div class = "row">
             <div class = "col-md-3">
                 <div class = "card-inner">
@@ -15,6 +14,7 @@
                   <% else %>
                     Time not set
                   <% end %>
+                  <div><%=link_to "Book Appointment",new_doctor_appointment_path(@doctor.id) %></div>
               </div>
             </div>
           </div>

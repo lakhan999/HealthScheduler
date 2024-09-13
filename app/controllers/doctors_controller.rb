@@ -53,12 +53,14 @@ class DoctorsController < ApplicationController
 
   # doctords history with his patients
   def patients_history
-    @patients = @doctor.patients
+    @history = User.joins(:appointments).where(appointments: { doctor_id: @doctor }).distinct
   end
 
   # determining doctors appointment
   def doctors_appointment_history
-    @appointment_history = @doctor.appointments
+    @appointment_history = Appointment.joins(:user)
+                           .where(doctor_id: @doctor.id)
+                           .select("appointments.*, users.first_name, users.last_name, users.email, appointments.reason,appointments.status")
   end
 
 

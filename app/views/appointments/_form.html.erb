@@ -1,0 +1,30 @@
+<div class = "center">
+  <h2>Book Appointment with Dr. <%= @doctor.name %></h2>
+</div>
+
+<div class = "centered-form">
+<%= form_with model: [@doctor, @appointment], local: true do |form| %>
+  <div>
+    <%= form.label :appointment_date, 'Appointment Date' %>
+    <%= form.date_select :appointment_date %>
+  </div>
+
+  <div>
+    <%= form.label :appointment_time, 'Appointment Time' %>
+    <%= form.time_select :appointment_time %>
+  </div>
+
+  <div>
+    <%= form.label :reason, 'Reason for Appointment' %>
+    <%= form.text_area :reason %>
+  </div>
+
+  <div>
+    <%= form.submit 'Book Appointment' %>
+  </div>
+<% end %>
+</div>
+
+<div class = "center">
+  <%= link_to 'Back to Doctor', doctor_path(@doctor) %>
+</div>

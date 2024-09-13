@@ -1,22 +1,14 @@
-<h2>Doctors page</h2>
-<p class="message"><%=notice%></p>
-<div>
-  <table>                     
-    <tr>                         
-     <th>Doctors Name</th>
-     <th>More Info</th>
-    </tr>    
-    <tr>
-      <%@doctors.each do |doctor|%>
-     <td><%=doctor.name %></td>
-     <td><%= link_to "Details", doctor %></td>
-   
-    </tr> 
-          <%end%>        
-  </table>       
-</div>
-<br>
-<div>
-  <%= link_to "Add your details" ,new_doctor_path%>
-</div>
+<h2 class = "center">Doctors Info</h2>
+  <div class = "body_container">
+    <%@doctors.each do |doctor|%>
+      <div class = "row">
+        <div class = "col-md-3">
+          <div class = "card-inner">
+            <div> <%= doctor.name %></div><br>
+            <div> <%= link_to "Details", doctor %></div><br>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
 

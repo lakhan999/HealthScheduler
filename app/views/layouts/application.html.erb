@@ -21,28 +21,21 @@
 
   <body>
 
-<nav class="navbar">
-    <div class="logo">HealthScheduler</div>
-    <ul class="nav-links">
-      <li><a href="\">Home</a></li>
-      <li><a href="patients">Patient</a></li>
-      <li><a href="doctors">Doctor</a></li>
-    </ul>
-</nav>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p> 
-      <a>   <% if user_signed_in? %> 
-      <div> Welcome <%= current_user.email %> </div> 
-       <div > <%= link_to "Sign out", destroy_user_session_path, data: {
-                            turbo_method: :delete,
-                            turbo_confirm: "Are you sure?"} %> 
-        </div>
-      <% else %>
-      <div>
-    <%= link_to "Sign in", new_user_session_path %> 
-      </div>
-      <% end %></div>
-      </a>
+    <%= render partial: 'shared/navbar' %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    
     <%= yield %>
   </body>
+  <footer class="footer">
+    <%# footer top %>
+    <div class = "footer-top">
+      <div class = "container-fluid">
+        <div class = "row">
+          <div class = "col-lg-3 col-md-6">
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>

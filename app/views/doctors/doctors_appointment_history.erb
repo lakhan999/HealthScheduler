@@ -1,26 +1,24 @@
-<p class="notification"><%= notice %></p>
 <h2>History</h2>
-  <%@appointment_history.each do |history|%>  
-  <% if history.patient.present? %>
 <table>                       
-  <tr>                          
-    <th>Patinet Name</th>
-    <th>Patinet mobile_number</th>
+  <tr>                        
+    <th>User First Name</th>
+    <th>User Last Name</th>
+    <th>Email</th>
     <th>Appointment-Date</th>
     <th>Appointment-Time</th>
     <th>Reason</th>
+    <th>Status</th>
   </tr>   
   <tr>  
-   
-    <td><%=history.patient.name%></td> 
- 
-    <td><%=history.patient.mobile_number%></td> 
-
+    <%@appointment_history.each do |history|%>  
+    <% if history.doctor.present? %>  
+    <td><%=history.first_name%></td> 
+    <td><%=history.last_name%></td> 
+    <td><%=history.email%></td> 
     <td><%=history.appointment_date%></td> 
-
     <td><%=history.appointment_time%></td> 
-
     <td><%=history.reason%></td> 
+    <td><%=history.status%></td> 
   </tr>
   <% else %>
   <h3>Patient not found</h3>

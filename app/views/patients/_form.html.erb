@@ -1,10 +1,10 @@
 <div class="centered-form">
-    <%= form_with model:@patient,local:true  do |form| %>
+    <%= form_with model:@user,local:true  do |form| %>
     <h3>Enter your details</h3>
       <div>
         <%= form.label :name %>
         <%= form.text_field :name %>
-        <% @patient.errors.full_messages_for(:name).each do |message| %>
+        <% @user.errors.full_messages_for(:name).each do |message| %>
         <div class="message"><%= message %></div>
       <% end %>
       </div>

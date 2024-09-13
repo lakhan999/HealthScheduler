@@ -24,8 +24,7 @@ Rails.application.routes.draw do
     get :doctors_appointment_history
     get :patients_history
     end
+    resources :appointments, only: [ :new, :create ]
     resources :doctor_availabilities, only: [ :new, :create, :index, :show ]
   end
-
-  # resources :doctor_availabilities
 end
