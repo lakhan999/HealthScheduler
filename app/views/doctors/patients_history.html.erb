@@ -1,23 +1,20 @@
-<p class="notification"><%= notice %></p>
 <h2>History</h2>
 <table> 
-  <%@patients.each do |patient|%>                        
+                      
   <tr>                          
-    <th>Patinet Name</th>
-    <th>Patinet mobile_number</th>
-    <th>Reason</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>mobile_number</th>
   </tr>   
- 
-  <tr>
-    <td><%=patient.name%></td> 
- 
-    <td><%=patient.mobile_number%></td> 
-
-    <td><%=patient.medical_history%></td> 
+  <tr>  
+    <%@history.each do |history|%>  
+    <td><%=history.first_name%></td> 
+    <td><%=history.last_name%></td>
+    <td><%=history.mobile_number%></td> 
   </tr>
-                  
+  <%end%>           
 </table> 
-   <%end%>  
+ 
 <br>
 
 <div>

@@ -16,9 +16,20 @@ import flatpickr from "flatpickr"
 $(function() {
     $(".calender").each((i, el) => { 
         flatpickr(el,{
-            inline: true,
+            // inline: true,
             minDate: new Date(),
-            dateFormate: "m/d/y"
+            maxDate: new Date().fp_incr(7),
+            dateFormate: "m/d/y",
+            "disable": [
+        function(date) {
+            // return true to disable
+            return (date.getDay() === 0 || date.getDay() === 6);
+
+        }
+    ],
+    "locale": {
+        "firstDayOfWeek": 1 // start week on Monday
+    }
         })
     })
 }

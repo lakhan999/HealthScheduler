@@ -1,0 +1,24 @@
+<main>
+    <div class = "center">
+        <div class = "content">
+            <h3>Book N Meet a Doctor!</h3>
+            <p>India's best online appointment scheduling platform</p>
+            <h3 class = "center">Available Doctors</h3>
+            <div class = "body_container">
+                <%@doctors.each do |doctor|%>
+                <div class = "row">
+                    <div class = "col-md-3">
+                    <div class = "card-inner">
+                        <div> <%= doctor.name %></div><br>
+                        <div> <%= link_to "Details", doctor %></div><br>
+                    </div>
+                    </div>
+                </div>
+                <%end%>
+            </div>
+        </div>   
+    </div>
+    <div>
+        
+    </div>
+</main>

@@ -1,1 +1,10 @@
 <%= render "form",patient: @doctor %>
+
+<%# <div> %>
+  <%#>= link_to "Edit Profile", edit_doctor_path%>
+<%# </div>
+<div> %>
+  <%%#>= link_to "Delete Account", doctor_path(@doctor.id),data: {
+                            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?"}%>
+<%# </div> %>

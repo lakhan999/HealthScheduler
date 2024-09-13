@@ -105,6 +105,8 @@ require bootstrap-timepicker
   
   .nav-links {
     list-style: none;
+    margin: 0 15px;
+
   }
   
   .nav-links li {
@@ -116,6 +118,7 @@ require bootstrap-timepicker
     color: white;
     text-decoration: none;
     font-size: 18px;
+    padding: left;
   }
   
   .nav-links a:hover {
@@ -124,7 +127,7 @@ require bootstrap-timepicker
   
 
 .bg-brand {
-  background-color: #0f0980;
+  background-color: #ededf3;
   color: #fff;
 }
 
@@ -146,10 +149,41 @@ td {
   padding: 10px;
   text-align: left;
 }
-
+.center-table {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 input[type=text], select {
-  width: 100%;
+  width: auto;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=email], select {
+  width: auto;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=area], select {
+  width: auto;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: auto;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -159,7 +193,7 @@ input[type=text], select {
 }
 
 input[type=submit] {
-  width: auto;
+  width: 100%;
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -214,11 +248,10 @@ input[type=submit]:hover {
   display: flex;
   justify-content: center;  /* Centers items horizontally */
   align-items: center;      /* Centers items vertically */
-  height: 10vh;            /* Full viewport height to center vertically */
+  height: 5vh;            /* Full viewport height to center vertically */
   text-align: center;
-
   flex-wrap: wrap;
-  gap: auto;
+  gap: 0;
 
 }
 
@@ -258,3 +291,33 @@ input[type=submit]:hover {
   font-size: 16px;
   color: #666;
 }
+/* 
+.hero_home {
+  height: 100px;
+  width: 100%;
+  display: table;
+} */
+
+.hero_home.version_1 {
+  background: url(../img/hero_home_bg_1.svg) center bottom no-repeat #fdfdfe;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.content {
+  /* margin-top:0; */
+  margin: 0px;
+  font-size: 1.75rem;
+  font-weight: 100;
+  color: #031c38;
+  padding: 50px;
+  vertical-align: middle;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, .25);
+  /* background-color: #3e3f77;
+  background-color: rgba(63, 64, 121, .9); */
+}
+
+
