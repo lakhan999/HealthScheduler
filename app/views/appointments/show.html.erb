@@ -1,0 +1,22 @@
+<h2>Appointments</h2>
+  <table>                         
+    <tr>                          
+      <th>Appointment Date</th>
+      <th>Appointment Time</th>
+      <th>Reason</th>
+      <th>Status</th>
+    </tr>   
+    <tr>
+      <td><%= @appointment.appointment_date %></td> 
+      <td><%= @appointment.appointment_time %></td> 
+      <td><%= @appointment.reason %></td> 
+      <td><%= @appointment.status %></td>  
+    </tr>                      
+  </table> 
+<br>
+
+ <div>
+    <li><%= link_to "Back", appointments_path%>
+</div>
+
+ 

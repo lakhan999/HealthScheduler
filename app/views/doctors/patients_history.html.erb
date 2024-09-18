@@ -1,6 +1,6 @@
 <h2>History</h2>
 <table> 
-                      
+  <%if @history.present?%>                     
   <tr>                          
     <th>First Name</th>
     <th>Last Name</th>
@@ -12,7 +12,10 @@
     <td><%=history.last_name%></td>
     <td><%=history.mobile_number%></td> 
   </tr>
-  <%end%>           
+  <%end%>  
+  <% else %>
+  <h3>Patient not found</h3>
+  <%end%>    
 </table> 
  
 <br>

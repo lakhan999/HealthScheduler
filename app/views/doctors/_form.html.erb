@@ -1,5 +1,5 @@
 <div class="centered-form">
-    <%= form_for([current_user, current_user.patients.build])do |form| %>
+    <%= form_with model:@doctor, local: true do |form| %>
     <h3>Enter your details</h3>
       <div>
         <%= form.label :name %>

@@ -1,0 +1,26 @@
+<h2 class="center">Appointments</h2>
+<div class="body_container">
+  <% if @appointments.present? %>
+    <% @appointments.each do |appointment| %>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card-inner">
+            <div> <%= appointment.user.first_name %> </div><br>
+            <div> <%= link_to "More Details", appointment_path(appointment) %> </div><br>
+            
+            <% if current_user.admin? %>
+              <div>
+                <%= link_to "Edit", edit_appointment_path(appointment) %>
+              </div><br>
+              <div>
+                <%= button_to "Delete", appointment_path(appointment),method: :delete, data: { confirm: "Are you sure?" }%>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>You don't have any appointments yet!</p>
+  <% end %>
+</div>

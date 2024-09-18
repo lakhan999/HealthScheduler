@@ -1,6 +1,7 @@
 class DoctorsController < ApplicationController
    before_action :find_doctor_id, only: [  :edit, :destroy, :update, :patients_history, :doctors_appointment_history ]
    before_action :authenticate_user!
+  #  load_and_authorize_resource
   #
   def index
     @doctors = Doctor.all

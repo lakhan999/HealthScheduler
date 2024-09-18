@@ -1,30 +1,49 @@
+
+<%if @doctor.present?%>
+<h2 class = "center">Book Appointment with Dr. <%= @doctor.name%></h2>
+<%end%>
+<div class="centered-form">
+  <%= form_with(model: (@doctor.present? ? [@doctor, @appointment] : @appointment), local: true) do |form|  %>
+    
+    <div class="field">
+      <%= form.label :appointment_date %>
+      <%= form.date_field :appointment_date, value: @appointment.appointment_date || Date.today %>
+    </div>
+
+    <%if @available_slots.present?%> 
+    <div>
+      <%= form.label :appointment_time, 'Appointment Time' %>
+      <%= form.select :appointment_time ,options_for_select(@available_slots), {}, class: "time-select"%>
+    </div>
+    <%else%>
+    <div>
+      <%= form.label :appointment_time, 'Appointment Time' %>
+      <%= form.time_field :appointment_time %>
+    </div>
+    <%end%>
+    <div>
+      <%= form.label :reason, 'Reason for Appointment' %>
+      <%= form.text_area :reason %>
+    </div>
+
+    <%if current_user.role == "admin"%>
+    <div>
+      <%= form.label :status, 'Status',default: 'Panding' %>
+      <%= form.text_field :status %>
+    </div>
+    <%end%>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
+<%if @doctor.present?%>
 <div class = "center">
-  <h2>Book Appointment with Dr. <%= @doctor.name %></h2>
+  <%= link_to 'Back to Profile', patient_path(current_user)%>
 </div>
-
-<div class = "centered-form">
-<%= form_with model: [@doctor, @appointment], local: true do |form| %>
-  <div>
-    <%= form.label :appointment_date, 'Appointment Date' %>
-    <%= form.date_select :appointment_date %>
-  </div>
-
-  <div>
-    <%= form.label :appointment_time, 'Appointment Time' %>
-    <%= form.time_select :appointment_time %>
-  </div>
-
-  <div>
-    <%= form.label :reason, 'Reason for Appointment' %>
-    <%= form.text_area :reason %>
-  </div>
-
-  <div>
-    <%= form.submit 'Book Appointment' %>
-  </div>
-<% end %>
-</div>
-
+<%else%>
 <div class = "center">
-  <%= link_to 'Back to Doctor', doctor_path(@doctor) %>
+  <%= link_to 'Back to Appointment', appointment_path(@appointment) %>
 </div>
+<%end%>

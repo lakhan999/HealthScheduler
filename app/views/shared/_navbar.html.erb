@@ -1,20 +1,31 @@
 <nav class = "navbar">
     <div class="logo">HealthScheduler</div>
         <ul class="nav-links">
+
+            <form action="<%= search_path %>" method="get">
+                <input type="text" name="q" placeholder="Search doctors or patients...">
+                <button type="submit">Search</button>
+            </form>
+
             <%= link_to "Home", "/" %>
             <% if user_signed_in? %>
-                <%= form_tag(destroy_user_session_path, method: :delete, style: 'display: inline-block;') do %>
-                <%= link_to "Profile", patient_path(current_user) %>  
-                <%= submit_tag "Sign Out" %>
+                <% if current_user.role == "admin" %>
+                    <li><%= link_to "Profile", patient_path(current_user) %></li>
+                    <li><%= link_to "Patients", patients_path(@user) %></li>
+                    <li><%= link_to "Doctors", doctors_path %></li>
+                    <li><%= link_to "Appointments", appointments_path%></li>
+                <% else %>
+                    <li><%= link_to "Profile", patient_path(current_user) %></li>
                 <% end %>
-            <% else %>
-            <div>
-                <%= link_to "Sign Up", new_user_registration_path %>
-            </div>
-            <div>
-                <%= link_to "Sign In", new_user_session_path %>
-            </div>    
-            <% end %>
+                <li>
+                    <%= form_tag(destroy_user_session_path, method: :delete, style: 'display: inline-block;') do %>
+                    <%= submit_tag "Sign Out" %>
+                    <% end %>
+                </li>
+                <% else %>
+                <li><%= link_to "Sign Up", new_user_registration_path %></li>
+                <li><%= link_to "Sign In", new_user_session_path %></li>
+                <% end %>
         </ul>
      </div>
 </nav>

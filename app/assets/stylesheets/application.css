@@ -95,6 +95,9 @@ require bootstrap-timepicker
     background-color: #0f0980;
     padding: 20px;
     border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    
   }
   
   .logo {
@@ -105,13 +108,15 @@ require bootstrap-timepicker
   
   .nav-links {
     list-style: none;
-    margin: 0 15px;
-
+    margin: 0 30px;
+    padding: auto;
+    text-align: justify;
   }
   
   .nav-links li {
     display: inline;
     margin: 0 15px;
+
   }
   
   .nav-links a {
@@ -119,6 +124,7 @@ require bootstrap-timepicker
     text-decoration: none;
     font-size: 18px;
     padding: left;
+    text-align: justify;
   }
   
   .nav-links a:hover {
@@ -155,7 +161,7 @@ td {
 }
 
 input[type=text], select {
-  width: auto;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -173,7 +179,7 @@ input[type=email], select {
   box-sizing: border-box;
 }
 input[type=area], select {
-  width: auto;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -208,12 +214,12 @@ input[type=submit]:hover {
 }
 
 .centered-form {
-  display: flex;
+  display:flex;
   justify-content: center;
   align-items: center;
   height: auto;
   margin: 0;
-  /* background-color: #f2f2f2; optional background color */
+  /* background-color: #f2f2f2;  */
 }
 .centered-form div {
   margin-bottom: 10px;
@@ -264,7 +270,7 @@ input[type=submit]:hover {
 
 .col-md-3 {
   flex: 1;
-  max-width: 500px; /* Adjust width of the columns as needed */
+  max-width: 300px; /* Adjust width of the columns as needed */
 }
 
 .card-inner {
@@ -304,10 +310,12 @@ input[type=submit]:hover {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  display: flex;
 }
 
 .content {
   /* margin-top:0; */
+  /* display: flex; */
   margin: 0px;
   font-size: 1.75rem;
   font-weight: 100;
@@ -321,3 +329,16 @@ input[type=submit]:hover {
 }
 
 
+footer {
+  position: auto;
+  left: 0;
+  overflow: pre;
+  background-color: #0f3c74;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 30%; /* This ensures the footer is pushed to the bottom */
+  bottom: 0;
+  width: 100%;
+
+}

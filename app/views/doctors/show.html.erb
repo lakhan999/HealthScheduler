@@ -7,7 +7,11 @@
       <th>Address</th>
       <th>specialization</th>
       <th>consultation_fees</th>
-      <th>experians</th>
+      <th>experience</th>
+      <%if current_user.role == "admin"%> 
+      <th>Edit</th>
+      <th>Delete</th>
+      <%end%>
     </tr>   
     <tr>
       <td><%= @doctor.name %></td> 
@@ -16,6 +20,11 @@
       <td><%= @doctor.specialization %></td> 
       <td><%= @doctor.consultation_fees %></td> 
       <td><%= @doctor.experians %></td> 
+      <%if current_user.role == "admin"%> 
+      <td><%=link_to "Edit Doctors Profile",edit_doctor_path(@doctor)%>
+      <td><%= button_to "Delete Doctor's Profile", doctor_path(@doctor), method: :delete, data: { confirm: "Are you sure?" } %>
+</td> 
+      <%end%>
     </tr>                      
   </table> 
   <br>
@@ -24,3 +33,9 @@
   </div>
 <%=render "links"%>
 </div>
+
+<%if current_user.role == "admin"%> 
+  <div class = "center">
+    <%=link_to "Add Availability",new_doctor_doctor_availability_path(@doctor.id)%> 
+  </div>
+<%end%>
