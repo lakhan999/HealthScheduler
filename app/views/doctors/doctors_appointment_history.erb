@@ -1,6 +1,7 @@
 <h2>History</h2>
 <table>                       
-  <tr>                        
+  <tr> 
+    <% if @appointment_history.present? %>                        
     <th>User First Name</th>
     <th>User Last Name</th>
     <th>Email</th>
@@ -10,20 +11,19 @@
     <th>Status</th>
   </tr>   
   <tr>  
-    <%@appointment_history.each do |history|%>  
-    <% if history.doctor.present? %>  
+    <%@appointment_history.each do |history|%>   
     <td><%=history.first_name%></td> 
     <td><%=history.last_name%></td> 
     <td><%=history.email%></td> 
     <td><%=history.appointment_date%></td> 
-    <td><%=history.appointment_time%></td> 
+    <td><%=history.appointment_time.strftime("%I:%M %p") %></td> 
     <td><%=history.reason%></td> 
     <td><%=history.status%></td> 
-  </tr>
+  </tr>  
+  <%end%>  
   <% else %>
   <h3>Patient not found</h3>
-  <%end%>   
-<%end%>              
+  <%end%>             
 </table> 
 <br>
 

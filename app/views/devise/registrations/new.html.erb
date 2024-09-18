@@ -35,11 +35,12 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
-
+<%# 
     <div class="field">
       <%= f.label :role, "Sign up as" %>
-      <%= f.select :role, options_for_select([['user', 'user'],['admin', 'admin']]) %>
-    </div>
+      <%# %>
+      <%# = f.select :role, options_for_select([['user', 'user']]) %>
+    
 
     <div class="actions">
       <%= f.submit "Sign up" %>

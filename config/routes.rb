@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
+  get "search", to: "home#search", as: "search"
+
   resources :patients do
     member do
       get :appointment_history
@@ -23,8 +25,9 @@ Rails.application.routes.draw do
     member do
     get :doctors_appointment_history
     get :patients_history
-    end
-    resources :appointments, only: [ :new, :create ]
-    resources :doctor_availabilities, only: [ :new, :create, :index, :show ]
   end
+    resources :appointments, only: [ :new, :create, :edit, :show, :index, :destroy ]
+    resources :doctor_availabilities, only: [ :new, :create, :index, :show, :destroy ]
+  end
+  resources :appointments
 end

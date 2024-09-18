@@ -1,0 +1,22 @@
+<h1>Search Results</h1>
+<%if @doctors.any? %>
+  <h2>Doctors</h2>
+  <ul>
+    <% @doctors.each do |doctor| %>
+      <li><%= link_to doctor.name, doctor_path(doctor) %></li>
+    <% end %>
+  </ul>
+<%end%>
+
+<% if @patients.any?%>
+  <h2>Patients</h2>
+  <ul>
+    <%if User.roles == "admin"%>
+    <% @patients.each do |patient| %>
+      <li><%= link_to patient.first_name, patient_path(patient) %></li>
+    <%end%>
+    <%else%>
+      <li><%= link_to current_user.first_name, patient_path(current_user) %></li>
+    <%end%>
+  </ul>
+<%end%>

@@ -1,18 +1,25 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_appointment, only: [ :show, :edit, :update, :destroy ]
-  before_action :set_doctor, only: [ :new, :create ]
+  before_action :set_appointment, only: [  :show, :edit,  :update, :destroy ]
+  before_action :set_doctor, only: [  :new, :show, :update, :create, :edit ]
+  # load_and_authorize_resource
 
   def index
-    @appointments = current_user.appointments # For viewing user's own appointments
+    @appointments = Appointment.all
   end
 
   def show
-    # Show the details of a specific appointment
   end
 
   def new
-    @appointment = @doctor.appointments.build
+    @appointment = Appointment.new
+    @appointment.appointment_date = params[:appointment_date] if params[:appointment_date].present?
+    @available_slots = generate_time_slots("09:00", "17:00")
+
+    if params[:appointment_date].present?
+      booked_slots = @doctor.appointments.where(appointment_date: params[:appointment_date]).pluck(:appointment_time).map { |time| time.strftime("%H:%M") }
+      @available_slots -= booked_slots
+    end
   end
 
   def create
@@ -27,7 +34,6 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    # Allow the user or admin to edit the appointment details
   end
 
   def update
@@ -39,25 +45,38 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointment.destroy
-    redirect_to appointments_path, notice: "Appointment was successfully canceled."
+    if @appointment.destroy
+      redirect_to appointments_path, notice: "Appointment was successfully canceled."
+    end
   end
 
   private
 
   def set_appointment
     @appointment = Appointment.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to @doctor, alert: "Appointment not found."
   end
 
   def set_doctor
-    @doctor = Doctor.find(params[:doctor_id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to doctors_path, alert: "Doctor not found."
+    if params[:doctor_id]
+      @doctor = Doctor.find(params[:doctor_id])
+    end
   end
 
   def appointment_params
     params.require(:appointment).permit(:appointment_date, :reason, :appointment_time, :status)
+  end
+
+  # providing time slots to the user to choos appropreate time
+  def generate_time_slots(start_time, end_time)
+    start_time = Time.parse(start_time)
+    end_time = Time.parse(end_time)
+    time_slots = []
+
+    while start_time < end_time
+      time_slots << start_time.strftime("%H:%M")
+      start_time += 30.minutes
+    end
+
+    time_slots
   end
 end

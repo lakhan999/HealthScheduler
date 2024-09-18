@@ -1,13 +1,13 @@
 <h3 class = "center">Your Patients</h3>
   <div class = "body_container">
     <%@users.each do |user|%>
-      <div class = "row">
-        <div class = "col-md-3">
-          <div class = "card-inner">
-            <div> <%= user.first_name %></div><br>
-            <div> <%= link_to "Patient Details", user_path(user) %></div><br>
+        <div class = "row">
+          <div class = "col-md-3">
+            <div class = "card-inner">
+              <div> <%= user.first_name %></div><br>
+              <div> <%= link_to "Patient Details", patient_path(user)%></div><br>
+            </div>
           </div>
         </div>
-      </div>
     <%end%>
   </div>

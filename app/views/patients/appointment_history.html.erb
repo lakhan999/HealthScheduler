@@ -1,7 +1,6 @@
 <h2>History</h2>
-<table> 
-  <%@history.each do |history|%>                        
-  <tr>                          
+<table>                   
+  <tr>                           
     <th>Doctor Name</th>
     <th>Doctor specialization</th>
     <th>Doctor Phone-number</th>
@@ -10,15 +9,17 @@
     <th>Reason</th>
   </tr>   
   <tr>
+    <%@history.each do |history|%> 
     <td><%=history.doctor.name%></td> 
     <td><%=history.doctor.specialization%></td> 
     <td><%=history.doctor.mobile_number%></td> 
     <td><%=history.appointment_date%></td> 
-    <td><%=history.appointment_time%></td> 
+    <td><%=history.appointment_time.strftime("%I:%M %p") %></td> 
     <td><%=history.reason%></td> 
-  </tr>             
+  </tr>  
+   <%end%>             
 </table> 
-   <%end%>  
+  
 <br>
 
 <div>
