@@ -8,7 +8,7 @@
     </tr>   
     <tr>
       <td><%= @appointment.appointment_date %></td> 
-      <td><%= @appointment.appointment_time %></td> 
+      <td><%= @appointment.appointment_time.strftime("%I:%M %p") %></td> 
       <td><%= @appointment.reason %></td> 
       <td><%= @appointment.status %></td>  
     </tr>                      

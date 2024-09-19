@@ -7,6 +7,7 @@
     <li>
       <%= link_to date.strftime("%Y-%m-%d"), new_doctor_appointment_path(@doctor, appointment_date: date) %>
     </li>
+    <br>
   <% end %>
 </ul>
 <%else%>

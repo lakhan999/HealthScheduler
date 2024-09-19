@@ -1,14 +1,16 @@
 class DoctorAvailabilitiesController < ApplicationController
-    # before_action :set_doctor_id, only: [ :create ]
-    before_action :set_doctor_id, only: [ :new, :create, :destroy, :show, :index ]
-    before_action :set_availability, only: [ :destroy, :update, :show ]
-    # load_and_authorize_resource
+    before_action :set_doctor_id, only: [ :new, :create, :destroy, :show, :index, :edit, :update ]
+    before_action :set_availability, only: [ :destroy, :update, :show, :edit ]
+    load_and_authorize_resource
     def index
       @available_dates = @doctor.doctor_availabilities.future.select(&:available?).map(&:date)
     end
 
     def new
       @availability = DoctorAvailability.new
+    end
+
+    def edit
     end
 
     def show

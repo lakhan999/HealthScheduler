@@ -1,6 +1,6 @@
- <div class = "center"> 
+ <div> 
   <h2>Doctor</h2>
-  <table class = "center-table">                         
+  <table>                         
     <tr>                          
       <th>Name</th>
       <th>Mobile-Number</th>
@@ -28,14 +28,17 @@
     </tr>                      
   </table> 
   <br>
-  <div>
-    <%= link_to "Back", "/"%>
-  </div>
-<%=render "links"%>
+  <div class="dropdown">
+    <button class="dropdown-button">Go-to</button>
+      <div class="dropdown-content">
+        <a class="dropdown-item"><%= link_to "Go back", "/"%></a>
+        <a class="dropdown-item"><%= link_to "View Doctors Availability" ,doctor_doctor_availabilities_path(@doctor.id)%></a>
+         <%if current_user.role == "admin"%> 
+        <a class="dropdown-item"><%=link_to "Add Availability",new_doctor_doctor_availability_path(@doctor.id)%></a>
+        <a class="dropdown-item"><%= link_to "Doctors Patients History" ,patients_history_doctor_path(@doctor.id)%></a>
+        <a class="dropdown-item"><%= link_to "Doctors Appointment History" ,doctors_appointment_history_doctor_path(@doctor.id)%></a>
+        <%end%>
+      </div>
+    </div>
+  <br>
 </div>
-
-<%if current_user.role == "admin"%> 
-  <div class = "center">
-    <%=link_to "Add Availability",new_doctor_doctor_availability_path(@doctor.id)%> 
-  </div>
-<%end%>

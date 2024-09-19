@@ -1,0 +1,16 @@
+<h1>Appointment Confirmed</h1>
+<p>Hello <%= @user.first_name %></p>
+
+<p>Your appointment with Dr. <%= @doctor.name%>has been confirmed.</p> 
+<p>Here are the details:</p>
+<ul>
+  <li>Date: <%= @appointment.appointment_date.strftime("%A, %B %d, %Y at %I:%M %p") %></li>
+  <li>Status: <%= @appointment.status%></li>
+  <li>Doctor: <%= @doctor.name%></li>
+  <li>Doctor-Mobile Number: <%= @doctor.mobile_number%></li>
+  <li>Booking ID: <%= @appointment.id%></li>
+</ul>
+
+<p>You can log in to view more details: <a href="<%= @url %>">Login</a></p>
+
+<p>Thank you for using HealthScheduler!</p>
