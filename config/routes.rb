@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get "search", to: "home#search", as: "search"
 
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   resources :patients do
     member do
       get :appointment_history
@@ -27,7 +29,7 @@ Rails.application.routes.draw do
     get :patients_history
   end
     resources :appointments, only: [ :new, :create, :edit, :show, :index, :destroy ]
-    resources :doctor_availabilities, only: [ :new, :create, :index, :show, :destroy ]
+    resources :doctor_availabilities
   end
   resources :appointments
 end

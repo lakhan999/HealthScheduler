@@ -29,7 +29,7 @@
     <%if current_user.role == "admin"%>
     <div>
       <%= form.label :status, 'Status',default: 'Panding' %>
-      <%= form.text_field :status %>
+      <%= form.select :status, options_for_select([['Panding', 'Panding'],['Confirmed','Confirmed'],['Rejected','Rejected']])%>
     </div>
     <%end%>
 

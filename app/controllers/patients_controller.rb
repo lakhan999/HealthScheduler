@@ -4,7 +4,7 @@ class PatientsController < ApplicationController
   before_action :set_user, only: [ :show, :appointment_history ]
 
   def index
-    @users = User.all
+    @users = User.order("first_name ASC, last_name ASC")
   end
 
   def show

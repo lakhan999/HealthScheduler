@@ -1,11 +1,12 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_appointment, only: [  :show, :edit,  :update, :destroy ]
+  before_action :set_appointment, only: [  :show, :edit,  :update, :destroy  ]
   before_action :set_doctor, only: [  :new, :show, :update, :create, :edit ]
-  # load_and_authorize_resource
+  before_action :set_available_dates, only: [ :create ]
+  load_and_authorize_resource
 
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.joins(:user).order("users.first_name ASC, users.last_name ASC")
   end
 
   def show
@@ -26,10 +27,21 @@ class AppointmentsController < ApplicationController
     @appointment = @doctor.appointments.build(appointment_params)
     @appointment.user = current_user
 
-    if @appointment.save
-      redirect_to @doctor, notice: "Appointment successfully booked."
-    else
-      render :new
+    # setting up logic for choosing only available dates for that perticular doctor
+    @flage = false
+    if @appointment.appointment_date.present?
+      @available_dates.each do |available_date|
+        if @appointment.appointment_date == available_date
+          @appointment.save
+          redirect_to @doctor, notice: "Appointment successfully booked."
+          break
+        else
+          @flage = true
+        end
+      end
+    end
+    if @flage == true
+      redirect_to doctor_doctor_availabilities_path, notice: "Please choose the correct available date."
     end
   end
 
@@ -38,6 +50,11 @@ class AppointmentsController < ApplicationController
 
   def update
     if @appointment.update(appointment_params)
+
+      # sending confirmation email to the user
+      if @appointment.update(status: "Confirmed")
+        UserMailer.appointment_confirmetion_email(@appointment).deliver_now
+      end
       redirect_to @appointment, notice: "Appointment updated successfully."
     else
       render :edit
@@ -50,16 +67,24 @@ class AppointmentsController < ApplicationController
     end
   end
 
+
   private
 
+  # setting appointment for defferent actions
   def set_appointment
     @appointment = Appointment.find(params[:id])
   end
 
+  # setting student for defferent actions
   def set_doctor
     if params[:doctor_id]
       @doctor = Doctor.find(params[:doctor_id])
     end
+  end
+
+  # setting available dates for create actions
+  def set_available_dates
+    @available_dates = @doctor.doctor_availabilities.future.select(&:available?).map(&:date)
   end
 
   def appointment_params
@@ -76,7 +101,6 @@ class AppointmentsController < ApplicationController
       time_slots << start_time.strftime("%H:%M")
       start_time += 30.minutes
     end
-
     time_slots
   end
 end
