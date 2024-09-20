@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Association for the user
   has_many :appointments, dependent: :destroy
   after_initialize :set_default_role
+
   # defining roles with the help of enum
   enum role: { user: 1, admin: 2 }
 

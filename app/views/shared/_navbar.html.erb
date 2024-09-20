@@ -6,22 +6,37 @@
                 <input type="text" name="q" placeholder="Search doctors or User...">
                 <button type="submit">Search</button>
             </form>
-
-            <%= link_to "Home", "/" %>
+        
+            <button class="dropdown-button"><%= link_to "Home", "/" %></button>
+    
             <% if user_signed_in? %>
                 <% if current_user.role == "admin" %>
-                    <li><%= link_to "Profile", patient_path(current_user) %></li>
-                    <li><%= link_to "Patients", patients_path(@user) %></li>
+                    <div class="dropdown">
+                        <button class="dropdown-button">Profile</button>
+                        <div class="dropdown-content">
+                            <a class="dropdown-item"><%= link_to "Your Profile", patient_path(current_user) %></a>
+                            <a class="dropdown-item"><%=link_to "Appointment History", appointment_history_patient_path(current_user)%></a>
+                            <a class="dropdown-item"><%= link_to 'Edit Profile', edit_user_registration_path %></a>
+                        </div>
+                    </div>
+                    <button class="dropdown-button"><%= link_to "Patients", patients_path(@user) %></button>
                     <div class="dropdown">
                         <button class="dropdown-button">Doctor</button>
                         <div class="dropdown-content">
-                        <a class="dropdown-item"><%= link_to "Your Doctors", doctors_path %></a>
+                            <a class="dropdown-item"><%= link_to "Your Doctors", doctors_path %></a>
+                            <a class="dropdown-item"><%= link_to "Create Doctors", new_doctor_path %></a>
                         </div>
                     </div>
-                    <li><%= link_to "Appointments", appointments_path%></li>
+                    <button class="dropdown-button"><%= link_to "Appointments", appointments_path%></button>
                 <% else %>
-                    <li><%= link_to "Profile", patient_path(current_user) %></li>
-                    <li><%=link_to "Appointment History", appointment_history_patient_path(current_user)%></li>
+                    <div class="dropdown">
+                        <button class="dropdown-button">Profile</button>
+                        <div class="dropdown-content">
+                            <a class="dropdown-item"><%= link_to "Your Profile", patient_path(current_user) %></a>
+                            <a class="dropdown-item"><%=link_to "Appointment History", appointment_history_patient_path(current_user)%></a>
+                            <a class="dropdown-item"><%= link_to 'Edit Profile', edit_user_registration_path %></a>
+                        </div>
+                    </div>
                 <% end %>
                 <li>
                     <%= form_tag(destroy_user_session_path, method: :delete, style: 'display: inline-block;') do %>
