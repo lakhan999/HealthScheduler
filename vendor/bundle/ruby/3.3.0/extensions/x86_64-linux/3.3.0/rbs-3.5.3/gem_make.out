@@ -1,0 +1,27 @@
+current directory: /home/developer/Desktop/HealthScheduler/vendor/bundle/ruby/3.3.0/gems/rbs-3.5.3/ext/rbs_extension
+/home/developer/.rbenv/versions/3.3.0/bin/ruby extconf.rb
+checking for whether -std=gnu99 is accepted as CFLAGS... yes
+creating Makefile
+
+current directory: /home/developer/Desktop/HealthScheduler/vendor/bundle/ruby/3.3.0/gems/rbs-3.5.3/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20240920-4850-oezt7h sitelibdir\=./.gem.20240920-4850-oezt7h clean
+
+current directory: /home/developer/Desktop/HealthScheduler/vendor/bundle/ruby/3.3.0/gems/rbs-3.5.3/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20240920-4850-oezt7h sitelibdir\=./.gem.20240920-4850-oezt7h
+compiling constants.c
+compiling lexer.c
+compiling lexstate.c
+compiling location.c
+compiling main.c
+compiling parser.c
+compiling parserstate.c
+compiling ruby_objs.c
+compiling unescape.c
+linking shared-object rbs_extension.so
+
+current directory: /home/developer/Desktop/HealthScheduler/vendor/bundle/ruby/3.3.0/gems/rbs-3.5.3/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20240920-4850-oezt7h sitelibdir\=./.gem.20240920-4850-oezt7h install
+/usr/bin/install -c -m 0755 rbs_extension.so ./.gem.20240920-4850-oezt7h
+
+current directory: /home/developer/Desktop/HealthScheduler/vendor/bundle/ruby/3.3.0/gems/rbs-3.5.3/ext/rbs_extension
+make DESTDIR\= sitearchdir\=./.gem.20240920-4850-oezt7h sitelibdir\=./.gem.20240920-4850-oezt7h clean

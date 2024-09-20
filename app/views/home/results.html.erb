@@ -11,7 +11,7 @@
 <% if @patients.any?%>
   <h2>Patients</h2>
   <ul>
-    <%if User.roles == "admin"%>
+    <%if current_user.role == "admin"%>
     <% @patients.each do |patient| %>
       <li><%= link_to patient.first_name, patient_path(patient) %></li>
     <%end%>

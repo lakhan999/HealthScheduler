@@ -1,7 +1,7 @@
 class DoctorAvailabilitiesController < ApplicationController
     before_action :set_doctor_id, only: [ :new, :create, :destroy, :show, :index, :edit, :update ]
     before_action :set_availability, only: [ :destroy, :update, :show, :edit ]
-    load_and_authorize_resource
+    # load_and_authorize_resource
     def index
       @available_dates = @doctor.doctor_availabilities.future.select(&:available?).map(&:date)
     end
@@ -29,7 +29,7 @@ class DoctorAvailabilitiesController < ApplicationController
 
     def update
       if @availability.update(availability_params)
-        redirect_to @availability, notice: "Availability updated successfully."
+        redirect_to @doctor, notice: "Availability updated successfully."
       else
         render :edit, status: :unprocessable_entity
       end
