@@ -138,27 +138,43 @@ require bootstrap-timepicker
 }
 
 
+
 table {
-  width: 30%;
+  width: 50%;
   border-collapse: collapse;
 }
 
 th {
-  border: 1px solid;
+  /* border: 1px solid;
   height: 10px;
   padding: 10px;
   text-align: left;
+  background-color: #04AA6D;
+  color: white; */
+
+  border: 0px solid #1d1a1a;
+  padding: 15px;
+  padding-top: 20px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f1ad0df8;
+  color: white;
+
 }
+tr:nth-child(even) {background-color: #f2f2f2;}
+tr:hover {background-color: rgb(239, 233, 180);}
+
 td {
-  border: 1px solid;
+  border: 0px solid;
   text-align: center;
-  padding: 10px;
+  padding: 15px;
   text-align: left;
 }
 .center-table {
   margin-left: auto;
   margin-right: auto;
 }
+
 
 input[type=text], select {
   width: 100%;
@@ -170,15 +186,6 @@ input[type=text], select {
   box-sizing: border-box;
 }
 input[type=email], select {
-  width: auto;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-input[type=area], select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -187,9 +194,18 @@ input[type=area], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
+/* input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+} */
 
 input[type=password], select {
-  width: auto;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -278,7 +294,7 @@ input[type=submit]:hover {
   flex-direction: column;
   align-items: center;
   padding: 40px;
-  background-color: #f8f9fa; /* Example background color */
+  background-color: #fae8fd; /* Example background color */
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -295,7 +311,7 @@ input[type=submit]:hover {
 
 .card-inner p {
   font-size: 16px;
-  color: #666;
+  color: #666666;
 }
 /* 
 .hero_home {
@@ -418,4 +434,190 @@ a:hover, a:active {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+
+
+.d-none{
+  display: none;
+}
+
+.available-date {
+  background-color: #32CD32 !important; /* LimeGreen color for available dates */
+  color: white;  /* Green */
+}
+
+.unavailable {
+  background-color: #f44336; /* Red */
+}
+
+
+/* Center the pagination and add padding */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+/* Style each page item */
+.pagination a,
+.pagination span {
+  color: #007bff; /* Link color */
+  padding: 8px 16px;
+  border: 1px solid #ddd; /* Border around each link */
+  border-radius: 4px; /* Rounded corners */
+  margin: 0 5px; /* Spacing between items */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.2s ease;
+}
+
+/* Hover state for pagination links */
+.pagination a:hover {
+  background-color: #f1f1f1;
+  border-color: #007bff;
+}
+
+/* Active page styling */
+.pagination .active span {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Disable state for previous/next links */
+.pagination .disabled span {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #f8f9fa;
+  border-color: #ddd;
+}
+
+
+
+
+.center .datepicker {
+  width: 50%;               /* Adjust the width of the calendar */
+  max-width: 400px;          /* Set a max width */
+  padding: 20px;             /* Optional padding for spacing */
+  background-color: #f8f9fa; /* Optional background color */
+  border-radius: 8px;        /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+#available-dates-calendar {
+  width: 100%;              /* Take full width of the container */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+ .calendar-container {
+  width: 300px;  /* You can adjust this size */
+  padding: 50px;
+  background-color: rgba(167, 207, 251, 0.875);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.calendar-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;  /* Full viewport height */
+}
+
+.calendar-centered-form {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin-top: 15px;
+  /* background-color: #f2f2f2;  */
+}
+
+
+
+
+
+
+/* app/assets/stylesheets/patients.css */
+.patient-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.patient-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.button-dropdown-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  margin-right: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  width: 50%;
+}
+
+
+
+
+/* patient view as a profile card */
+
+.profile-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 250px;
+}
+
+.profile-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.profile-info {
+  margin-bottom: 15px;
+}
+
+.profile-info p {
+  margin: 5px 0;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
 }

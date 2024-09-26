@@ -1,20 +1,14 @@
-<h2>Patient</h2>
-  <table>                         
-    <tr>                          
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Mobile-Number</th>
-      <th>Email</th>
-    </tr>   
-    <tr>
-      <td><%= @user.first_name %></td> 
-      <td><%= @user.last_name %></td> 
-      <td><%= @user.mobile_number %></td> 
-      <td><%= @user.email %></td>  
-    </tr>                      
-  </table> 
-<br>
-
-<div>
-  <li><%=link_to "Go-Back", "/"%></li>
+<div class = "profile-container">  
+  <div class="profile-card">
+    <h2>Patient Profile</h2>
+    <div class="profile-info">
+      <p><strong>First Name:</strong> <%= @user.first_name %></p>
+      <p><strong>Last Name:</strong> <%= @user.last_name %></p>
+      <p><strong>Mobile Number:</strong> <%= @user.mobile_number %></p>
+      <p><strong>Email:</strong> <%= @user.email %></p>
+    </div>
+    <div class="profile-actions">
+      <%= link_to "Go Back", "/", class: "back-button" %>
+    </div>
+  </div>
 </div>

@@ -1,9 +1,11 @@
 class DoctorAvailabilitiesController < ApplicationController
     before_action :set_doctor_id, only: [ :new, :create, :destroy, :show, :index, :edit, :update ]
     before_action :set_availability, only: [ :destroy, :update, :show, :edit ]
+
     # load_and_authorize_resource
     def index
       @available_dates = @doctor.doctor_availabilities.future.select(&:available?).map(&:date)
+      @available_dates_for_picker = @available_dates.map { |d| d.strftime("%Y-%m-%d") }
     end
 
     def new
@@ -11,15 +13,16 @@ class DoctorAvailabilitiesController < ApplicationController
     end
 
     def edit
+    @availabilities = @doctor.doctor_availabilities
     end
 
     def show
-      @available_dates = @doctor.available_dates
+      @available_dates = @doctor.doctor_availabilities.pluck(:date).uniq
+      @available_dates_for_picker = @available_dates.map { |date| date.strftime("%Y-%m-%d") }
     end
 
     def  create
       @availability = @doctor.doctor_availabilities.new(availability_params)
-
       if @availability.save
         redirect_to doctors_path, notice: "Availability was successfully created."
       else

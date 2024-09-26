@@ -1,25 +1,33 @@
 <h2 class="center">Appointments</h2>
-<div class="body_container">
+<div>
   <% if @appointments.present? %>
-    <% @appointments.each do |appointment| %>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="card-inner">
-            <div> <%= appointment.user.first_name %> </div><br>
-            <div> <%= link_to "More Details", appointment_path(appointment) %> </div><br>
-            
+    <table class="table center">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>More Details</th>
+          <% if current_user.admin? %>
+            <th>Edit</th>
+            <th>Delete</th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @appointments.each do |appointment| %>
+          <tr>
+            <td><%= appointment.user.first_name%> <%= appointment.user.last_name%> </td>
+            <td><%= link_to "More Details", appointment_path(appointment) %></td>
             <% if current_user.admin? %>
-              <div>
-                <%= link_to "Edit", edit_appointment_path(appointment) %>
-              </div><br>
-              <div>
-                <%= button_to "Delete", appointment_path(appointment),method: :delete, data: { confirm: "Are you sure?" }%>
-              </div>
+              <td><%= link_to "Edit", edit_appointment_path(appointment) %></td>
+              <td><%= button_to "Delete", appointment_path(appointment), method: :delete, data: { confirm: "Are you sure?" } %></td>
             <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <div class="pagination">
+    <%= paginate @appointments %>
+  </div>
   <% else %>
     <p>You don't have any appointments yet!</p>
   <% end %>

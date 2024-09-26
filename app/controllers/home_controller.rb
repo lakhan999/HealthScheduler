@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   def search
     if params[:q].present?
       query = params[:q]
-      @doctors = Doctor.where("name ILIKE ?", "%#{query}%")
+      @doctors = Doctor.where("name ILIKE ? OR address ILIKE ? OR specialization ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
       @patients = User.where("first_name ILIKE ?", "%#{query}%")
     else
       @doctors = []

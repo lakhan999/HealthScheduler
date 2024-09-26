@@ -3,7 +3,7 @@
         <ul class="nav-links">
 
             <form action="<%= search_path %>" method="get">
-                <input type="text" name="q" placeholder="Search doctors or User...">
+                <input type="text" name="q" placeholder="Search doctor via name specialization or city...">
                 <button type="submit">Search</button>
             </form>
         
@@ -24,7 +24,7 @@
                         <button class="dropdown-button">Doctor</button>
                         <div class="dropdown-content">
                             <a class="dropdown-item"><%= link_to "Your Doctors", doctors_path %></a>
-                            <a class="dropdown-item"><%= link_to "Create Doctors", new_doctor_path %></a>
+                            <a class="dropdown-item"><%= link_to "Add Doctor", new_doctor_path %></a>
                         </div>
                     </div>
                     <button class="dropdown-button"><%= link_to "Appointments", appointments_path%></button>

@@ -46,7 +46,7 @@ class DoctorsController < ApplicationController
     end
   end
 
-  # doctords history with his patients
+  # doctors history with his patients
   def patients_history
     @history = User.joins(:appointments).where(appointments: { doctor_id: @doctor }).distinct
   end
