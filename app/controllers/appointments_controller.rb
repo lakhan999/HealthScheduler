@@ -6,7 +6,7 @@ class AppointmentsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @appointments = Appointment.joins(:user).order("appointments.created_at DESC")
+    @appointments = Appointment.page(params[:page]).per(10).order("created_at DESC")
   end
 
   def show
@@ -27,17 +27,10 @@ class AppointmentsController < ApplicationController
     @appointment = @doctor.appointments.build(appointment_params)
     @appointment.user = current_user
 
-    # setting up logic for choosing only available dates for that perticular doctor
-    if @appointment.appointment_date.present?
-      @available_dates.each do |available_date|
-        if @appointment.appointment_date == available_date
-          @appointment.save
-          redirect_to @doctor, notice: "Appointment successfully booked."
-          break
-        end
-      end
+    if @appointment.save
+      redirect_to @doctor, notice: "Appointment successfully booked."
     else
-      redirect_to doctor_doctor_availabilities_path, notice: "Please choose the correct available date."
+      redirect_to doctor_doctor_availabilities_path, notice: "Please choose the correct available date or Time slote."
     end
   end
 

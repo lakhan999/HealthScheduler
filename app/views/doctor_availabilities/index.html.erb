@@ -1,16 +1,21 @@
- 
-<%if @available_dates.present? %>
-<h2>Doctor's Available Dates</h2>
+<div class="calendar-center">
+  <div class = "calendar-container">
+    <% if @available_dates.present? %>
+      <h2>Doctor's Available Dates</h2>
 
-<ul>
-  <% @available_dates.each do |date| %>
-    <li>
-      <%= link_to date.strftime("%Y-%m-%d"), new_doctor_appointment_path(@doctor, appointment_date: date) %>
-    </li>
-    <br>
-  <% end %>
-</ul>
-<%else%>
-<p>No available dates present</p>
-<%end%>
+      <div>
+        <input type="text" id="available-dates-calendar" class="datepicker" data-available-dates="<%= @available_dates_for_picker.to_json %>">
+      </div>
 
+      <div class="calendar-centered-form">
+        <%= form_with url: new_doctor_appointment_path(@doctor), method: :get, local: true do |form| %>
+          <%= form.hidden_field :appointment_date, id: "selected_date" %>
+          <%= form.submit "Book Appointment" %>
+        <% end %>
+      </div>
+
+    <% else %>
+      <p>No available dates present</p>
+    <% end %>
+  </div>
+</div>

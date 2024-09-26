@@ -1,13 +1,25 @@
-<h3 class = "center">Your Patients</h3>
-  <div class = "body_container">
-    <%@users.each do |user|%>
-        <div class = "row">
-          <div class = "col-md-3">
-            <div class = "card-inner">
-              <div> <%= user.first_name %></div><br>
-              <div> <%= link_to "Patient Details", patient_path(user)%></div><br>
-            </div>
-          </div>
-        </div>
-    <%end%>
-  </div>
+
+<h2 class="center">Your Patients</h2>
+<div>
+  <table class="table center">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>More Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@users.each do |user|%>
+        <tr>
+          <td><%= user.first_name%> <%= user.last_name%> </td>
+          <td><%= link_to "Patient Details", patient_path(user)%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<div class="pagination">
+  <%= paginate @users %>
+</div>
+
+
+  

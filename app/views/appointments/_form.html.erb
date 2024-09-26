@@ -6,9 +6,10 @@
   <%= form_with(model: (@doctor.present? ? [@doctor, @appointment] : @appointment), local: true) do |form|  %>
     
     <div class="field">
-      <%= form.label :appointment_date %>
-      <%= form.date_field :appointment_date, value: @appointment.appointment_date || Date.today %>
+      <%= form.hidden_field :appointment_date %>
+      <%= form.hidden_field :appointment_date, value: @appointment.appointment_date || Date.today %>
     </div>
+
 
     <%if @available_slots.present?%> 
     <div>
@@ -23,7 +24,7 @@
     <%end%>
     <div>
       <%= form.label :reason, 'Reason for Appointment' %>
-      <%= form.text_area :reason %>
+      <%= form.text_field :reason %>
     </div>
 
     <%if current_user.role == "admin"%>

@@ -10,7 +10,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # validation
-  validates :first_name, :last_name,  presence: true
+  validates :first_name, :last_name, :mobile_number, presence: true
   validates :mobile_number, numericality: true, length: { in: 0..10 }
 
   private

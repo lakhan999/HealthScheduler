@@ -1,17 +1,22 @@
-import flatpickr from 'flatpickr';
-import 'flatpickr/dist/flatpickr.min.css';
+import flatpickr from "flatpickr";
+// import "flatpickr/dist/flatpickr.min.css"; // Import Flatpickr CSS
 
-// Ensure it's applied to the correct input field
-document.addEventListener('turbolinks:load', function() {
-  const dateInput = document.querySelector('input[name="appointment[appointment_date]"]');
-  const unavailableDates = dateInput ? JSON.parse(dateInput.dataset.unavailableDates || "[]") : [];
+import jquery from "jquery";
+window.jQuery = jquery;
+window.$ = jquery;
 
-  if (dateInput) {
-    flatpickr(dateInput, {
-      enableTime: false,  // Disable time if not needed in the date picker
+document.addEventListener("DOMContentLoaded", function() {
+  const availableDates = JSON.parse(document.querySelector('#available-dates-calendar').dataset.availableDates);
+  const calendarInput = document.querySelector("#available-dates-calendar");
+
+  if (calendarInput) {
+    flatpickr(calendarInput, {
+      inline: true,
       dateFormat: "Y-m-d",
-      minDate: "today",   // Disable past dates
-      disable: unavailableDates  // Disable unavailable dates
+      enable: availableDates,  
+      onChange: function(selectedDates, dateStr) {
+        document.querySelector("#selected_date").value = dateStr;  // Set hidden field with the selected date
+      }
     });
   }
 });
