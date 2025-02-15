@@ -112,6 +112,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
+    dotenv (3.1.7)
     drb (2.2.1)
     erubi (1.13.0)
     globalid (1.2.1)
@@ -364,6 +365,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  dotenv
   importmap-rails
   jbuilder
   kaminari

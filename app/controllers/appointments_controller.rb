@@ -39,10 +39,9 @@ class AppointmentsController < ApplicationController
 
   def update
     if @appointment.update(appointment_params)
-
       # sending confirmation email to the user
-      if @appointment.update(status: "Confirmed")
-        UserMailer.appointment_confirmetion_email(@appointment).deliver_now
+      if @appointment.status == "Confirmed"||"Rejected"
+        UserMailer.appointment_regarding_email(@appointment).deliver_now
       end
       redirect_to @appointment, notice: "Appointment updated successfully."
     else
